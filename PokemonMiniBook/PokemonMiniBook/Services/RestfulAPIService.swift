@@ -31,4 +31,16 @@ class RestfulAPIService {
             }
         }.resume()
     }
+    
+    func httpGetFetchData<T: Decodable>(url: String, responseType: T.Type) async -> T? {
+        guard let url = URL(string: url) else { return nil }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            print("\(error)")
+            return nil
+        }
+    }
 }

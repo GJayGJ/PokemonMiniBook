@@ -8,7 +8,7 @@
 import Foundation
 
 /// Flattened struct from the original complex nested JSON
-struct Pokemon: Decodable {
+struct Pokemon: Decodable, Identifiable {
     let id: Int
     let name: String
     let height: Int
@@ -144,5 +144,22 @@ struct Pokemon: Decodable {
 
     private struct Stat: Decodable {
         let name: String
+    }
+}
+
+extension Pokemon {
+    /// For mock data in preview
+    init(id: Int, name: String, height: Int, weight: Int, locationAreaEncountersURL: String, spriteURL: String, cryURL: String, abilityNames: [String], moveNames: [String], typeNames: [String], pokemonStat: PokemonStats) {
+        self.id = id
+        self.name = name
+        self.height = height
+        self.weight = weight
+        self.locationAreaEncountersURL = locationAreaEncountersURL
+        self.spriteURL = spriteURL
+        self.cryURL = cryURL
+        self.abilityNames = abilityNames
+        self.moveNames = moveNames
+        self.typeNames = typeNames
+        self.pokemonStat = pokemonStat
     }
 }
