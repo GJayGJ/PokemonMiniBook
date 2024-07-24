@@ -9,8 +9,20 @@ import Foundation
 
 class PokemonListViewModel: ObservableObject {
     @Published var pokemons: [Pokemon] = []
+    @Published var filterText: String = ""
     
+    var filteredPokemons: [Pokemon] {
+        if filterText.isEmpty {
+            return pokemons
+        } else {
+            return pokemons.filter { $0.name.lowercased().contains(filterText.lowercased()) }
+        }
+    }
+    
+    /// Fetch all the urls for each pokemon and then fetch the datailed info of the pokemon through the url
     func fetchPokemonInfos() async {
+        guard pokemons.isEmpty else { return }
+        
         guard let pokemonUrls = await RestfulAPIService.shared.httpGetFetchData(
             url: API.pokeApiUrl(for: .pokemon),
             responseType: PokemonUrlsResponse.self
@@ -39,6 +51,12 @@ class PokemonListViewModel: ObservableObject {
         }
     }
     
+    // TODO: Sort by other ways
+    func reorder() {
+        pokemons.sort(by: { $0.id < $1.id } )
+    }
+    
+    /// Fetch detailed info of an individual pokemon through a url
     private func fetchPokemonInfo(url: String) async -> Pokemon? {
         let pokemon = await RestfulAPIService.shared.httpGetFetchData(url: url, responseType: Pokemon.self)
         return pokemon
