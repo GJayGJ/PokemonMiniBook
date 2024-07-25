@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9426439B2C51A8AD0097784A /* DDSpiderChart in Frameworks */ = {isa = PBXBuildFile; productRef = 9426439A2C51A8AD0097784A /* DDSpiderChart */; };
+		942643A02C51AA370097784A /* PokemonStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9426439F2C51AA370097784A /* PokemonStatsView.swift */; };
 		949B31CF2C4BFABF00EF278E /* PokemonMiniBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949B31CE2C4BFABF00EF278E /* PokemonMiniBookApp.swift */; };
 		949B31D32C4BFAC100EF278E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 949B31D22C4BFAC100EF278E /* Assets.xcassets */; };
 		949B31D62C4BFAC100EF278E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 949B31D52C4BFAC100EF278E /* Preview Assets.xcassets */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9426439F2C51AA370097784A /* PokemonStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonStatsView.swift; sourceTree = "<group>"; };
 		949B31CB2C4BFABF00EF278E /* PokemonMiniBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonMiniBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		949B31CE2C4BFABF00EF278E /* PokemonMiniBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMiniBookApp.swift; sourceTree = "<group>"; };
 		949B31D22C4BFAC100EF278E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9426439B2C51A8AD0097784A /* DDSpiderChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +112,7 @@
 				949B31EF2C4EF08B00EF278E /* PokemonRow.swift */,
 				949B31F12C4F1A3C00EF278E /* PokemonListView.swift */,
 				949B31F32C4F1A8100EF278E /* PokemonDetailView.swift */,
+				9426439F2C51AA370097784A /* PokemonStatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +158,9 @@
 			dependencies = (
 			);
 			name = PokemonMiniBook;
+			packageProductDependencies = (
+				9426439A2C51A8AD0097784A /* DDSpiderChart */,
+			);
 			productName = PokemonMiniBook;
 			productReference = 949B31CB2C4BFABF00EF278E /* PokemonMiniBook.app */;
 			productType = "com.apple.product-type.application";
@@ -181,6 +189,9 @@
 				Base,
 			);
 			mainGroup = 949B31C22C4BFABF00EF278E;
+			packageReferences = (
+				942643992C51A8AC0097784A /* XCRemoteSwiftPackageReference "DDSpiderChart" */,
+			);
 			productRefGroup = 949B31CC2C4BFABF00EF278E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,6 +227,7 @@
 				949B31DF2C4D5B3200EF278E /* RestfulAPIService.swift in Sources */,
 				949B31E62C4E83C500EF278E /* API.swift in Sources */,
 				949B31DD2C4C0CCE00EF278E /* Pokemon.swift in Sources */,
+				942643A02C51AA370097784A /* PokemonStatsView.swift in Sources */,
 				949B31F82C4FC06400EF278E /* StatefulPreviewWrapper.swift in Sources */,
 				949B31FB2C5002B600EF278E /* PokemonListViewModel.swift in Sources */,
 				949B31F02C4EF08B00EF278E /* PokemonRow.swift in Sources */,
@@ -424,6 +436,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		942643992C51A8AC0097784A /* XCRemoteSwiftPackageReference "DDSpiderChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dadalar/DDSpiderChart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9426439A2C51A8AD0097784A /* DDSpiderChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 942643992C51A8AC0097784A /* XCRemoteSwiftPackageReference "DDSpiderChart" */;
+			productName = DDSpiderChart;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 949B31C32C4BFABF00EF278E /* Project object */;
 }

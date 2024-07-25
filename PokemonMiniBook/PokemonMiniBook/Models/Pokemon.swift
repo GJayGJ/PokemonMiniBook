@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// Flattened struct from the original complex nested JSON
-struct Pokemon: Decodable, Identifiable {
+// MARK: Struct properties
+struct Pokemon: Identifiable {
     let id: Int
     let name: String
     let height: Int
@@ -20,7 +20,10 @@ struct Pokemon: Decodable, Identifiable {
     let moveNames: [String]
     let typeNames: [String]
     let pokemonStat: PokemonStats
+}
 
+// MARK: Flattened struct from the original complex nested JSON
+extension Pokemon: Decodable {
     enum CodingKeys: String, CodingKey {
         case id, name, height, weight, sprites, cries, abilities, moves, types, stats
         case locationAreaEncounters = "location_area_encounters"
@@ -147,19 +150,13 @@ struct Pokemon: Decodable, Identifiable {
     }
 }
 
-extension Pokemon {
-    /// For mock data in preview
-    init(id: Int, name: String, height: Int, weight: Int, locationAreaEncountersURL: String, spriteURL: String, cryURL: String, abilityNames: [String], moveNames: [String], typeNames: [String], pokemonStat: PokemonStats) {
-        self.id = id
-        self.name = name
-        self.height = height
-        self.weight = weight
-        self.locationAreaEncountersURL = locationAreaEncountersURL
-        self.spriteURL = spriteURL
-        self.cryURL = cryURL
-        self.abilityNames = abilityNames
-        self.moveNames = moveNames
-        self.typeNames = typeNames
-        self.pokemonStat = pokemonStat
+// MARK: Conforms to Hashable and Equatable
+extension Pokemon: Hashable {
+    static func == (lhs: Pokemon, rhs: Pokemon) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
