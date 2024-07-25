@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum SortCriteria {
+    case id, name, bookmarked
+}
+
 class PokemonListViewModel: ObservableObject {
     @Published var pokemons: [Pokemon] = []
     @Published var filterText: String = ""
@@ -51,9 +55,18 @@ class PokemonListViewModel: ObservableObject {
         }
     }
     
-    // TODO: Sort by other ways
-    func reorder() {
-        pokemons.sort(by: { $0.id < $1.id } )
+    func reorder(by criteria: SortCriteria, bookmarkViewModel: BookmarkViewModel? = nil) {
+        switch criteria {
+        case .id:
+            pokemons.sort(by: { $0.id < $1.id } )
+        case .name:
+            pokemons.sort(by: { $0.name < $1.name } )
+        case .bookmarked:
+            guard let bookmarkViewModel = bookmarkViewModel else { return }
+            pokemons.sort { pokemon1, pokemon2 in
+                bookmarkViewModel.isBookmarked(id: pokemon1.id) && !bookmarkViewModel.isBookmarked(id: pokemon2.id)
+            }
+        }
     }
     
     /// Fetch detailed info of an individual pokemon through a url

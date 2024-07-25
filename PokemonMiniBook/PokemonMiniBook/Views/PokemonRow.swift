@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PokemonRow: View {
     @Binding var pokemon: Pokemon
-    @EnvironmentObject var bookmarkViewModel: BookmarkViewModel
     
     var body: some View {
         HStack {
@@ -74,5 +73,6 @@ struct PokemonRow: View {
     
     return StatefulPreviewWrapper(mukAlola) { pokemon in
         PokemonRow(pokemon: pokemon)
+            .environmentObject(BookmarkViewModel())
     }
 }

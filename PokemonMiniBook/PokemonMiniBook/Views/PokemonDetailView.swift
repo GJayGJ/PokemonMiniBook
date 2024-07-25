@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PokemonDetailView: View {
     @Binding var pokemon: Pokemon
-    @EnvironmentObject var bookmarkViewModel: BookmarkViewModel
 
     var body: some View {
         ScrollView {
@@ -127,5 +126,6 @@ struct PokemonDetailView: View {
     
     return StatefulPreviewWrapper(mukAlola) { pokemon in
         PokemonDetailView(pokemon: pokemon)
+            .environmentObject(BookmarkViewModel())
     }
 }

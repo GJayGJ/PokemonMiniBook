@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PokemonListView: View {
     @StateObject var viewModel = PokemonListViewModel()
+    @EnvironmentObject var bookmarkViewModel: BookmarkViewModel
     
     var body: some View {
         NavigationStack {
@@ -48,11 +49,28 @@ struct PokemonListView: View {
                 )
                 PokemonDetailView(pokemon: pokemonBinding)
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button("Sort by ID") {
+                            viewModel.reorder(by: .id)
+                        }
+                        Button("Sort by Name") {
+                            viewModel.reorder(by: .name)
+                        }
+                        Button("Sort by Pokeball") {
+                            viewModel.reorder(by: .bookmarked, bookmarkViewModel: bookmarkViewModel)
+                        }
+                    } label: {
+                        Label("Sort", systemImage: "arrow.up.and.down.text.horizontal")
+                    }
+                }
+            }
         }
         .onAppear() {
             Task {
                 await viewModel.fetchPokemonInfos()
-                viewModel.reorder()
+                viewModel.reorder(by: .id)
             }
         }
     }
@@ -61,4 +79,5 @@ struct PokemonListView: View {
 
 #Preview {
     PokemonListView()
+        .environmentObject(BookmarkViewModel())
 }

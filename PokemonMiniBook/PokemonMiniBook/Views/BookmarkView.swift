@@ -23,3 +23,8 @@ struct BookmarkView: View {
         .buttonStyle(.borderless)
     }
 }
+
+#Preview {
+    BookmarkView(pokemonID: 10113)
+        .environmentObject(BookmarkViewModel())
+}
