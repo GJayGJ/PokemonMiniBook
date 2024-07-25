@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct PokemonMiniBookApp: App {
+    var bookmarkViewModel = BookmarkViewModel()
+    
     var body: some Scene {
         WindowGroup {
             PokemonListView()
+                .environmentObject(bookmarkViewModel)
         }
     }
 }

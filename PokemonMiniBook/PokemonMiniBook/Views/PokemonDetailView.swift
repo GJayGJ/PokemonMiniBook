@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PokemonDetailView: View {
     @Binding var pokemon: Pokemon
+    @EnvironmentObject var bookmarkViewModel: BookmarkViewModel
 
     var body: some View {
         ScrollView {
@@ -21,13 +22,22 @@ struct PokemonDetailView: View {
                 }
                 .frame(width: 200, alignment: .center)
                 
-                // The id and the name of the pokemon
-                Text("#\(pokemon.id)")
-                    .font(.title2)
-                Text(pokemon.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-
+                HStack(alignment: .center, spacing: 15) {
+                    // Pokeball button
+                    BookmarkView(pokemonID: pokemon.id)
+                    
+                    // The id and the name of the pokemon
+                    VStack(alignment: .leading) {
+                        Text("#\(pokemon.id)")
+                            .font(.title2)
+                        Text(pokemon.name)
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
+                }
+                
+                
+                
                 // Height and Weight of the pokemon
                 VStack(alignment: .leading) {
                     Text("Height: \(pokemon.height) decimetres")

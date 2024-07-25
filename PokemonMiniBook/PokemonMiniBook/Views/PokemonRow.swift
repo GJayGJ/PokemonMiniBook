@@ -9,9 +9,13 @@ import SwiftUI
 
 struct PokemonRow: View {
     @Binding var pokemon: Pokemon
+    @EnvironmentObject var bookmarkViewModel: BookmarkViewModel
     
     var body: some View {
         HStack {
+            BookmarkView(pokemonID: pokemon.id)
+                .padding(.trailing, 10)
+            
             VStack(alignment: .leading) {
                 Text("#\(pokemon.id)")
                     .font(.caption)
