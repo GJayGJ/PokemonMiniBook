@@ -10,7 +10,7 @@ import Foundation
 // MARK: Struct properties
 struct Pokemon: Identifiable {
     let id: Int
-    let name: String
+    var name: String
     let height: Int
     let weight: Int
     let locationAreaEncountersURL: String

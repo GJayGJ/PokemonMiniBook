@@ -34,9 +34,6 @@ struct PokemonListView: View {
             .searchable(text: $viewModel.filterText, prompt: "Search Pokemon")
             .navigationTitle("Pokemon List")
             .navigationDestination(for: Pokemon.self) { pokemon in
-                
-                // TODO: Refactor binding
-                
                 // Create a binding of pokemon to interact with rows
                 let pokemonBinding = Binding(
                     get: {

@@ -29,9 +29,10 @@ struct PokemonDetailView: View {
                     VStack(alignment: .leading) {
                         Text("#\(pokemon.id)")
                             .font(.title2)
-                        Text(pokemon.name)
-                            .font(.title)
-                            .fontWeight(.bold)
+                        TextField("HIHI", text: $pokemon.name)
+//                        Text(pokemon.name)
+//                            .font(.title)
+//                            .fontWeight(.bold)
                     }
                 }
                 
