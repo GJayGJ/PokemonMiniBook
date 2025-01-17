@@ -9,3 +9,4 @@ PokemonMiniBook is a mini app where users can browse the visualized basic stats 
 - **Sorting Options**: Pokémon can be sorted based on ID, name, or bookmark status, allowing users to easily find their Pokémon of interest.
 - **Filtering**: A search feature allows users to filter Pokémon by name, making it easier to find specific Pokémon in the list.
 
+![Demo-PokemonMiniBook](https://github.com/user-attachments/assets/328f1736-f98b-4619-ae5f-30e8fd50ac91)
